@@ -10,17 +10,19 @@ const getTodos = async (req,res) =>{
 // CREATE
 const createTodo = async (req,res) =>{
    const {title, description, isCompleted} = req.body
-
-   if(!title || !description || !isCompleted){
+    // console.log("req", req.body)
+   if(!title || !description){
     res.status(400)
     throw new Error("Please fill all details".red)
    }
 
    const newTodo = await Todo.create({
+    userId: req.params.userId ,
     title,
     description,
     isCompleted
    })
+//    console.log("object", newTodo);
    if(newTodo){
     res.status(200).json(newTodo)
    }

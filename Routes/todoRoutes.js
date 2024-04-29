@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.get('/',getTodos)
 
-router.post('/', createTodo)
+router.post('/:userId', createTodo)
 
 router.get('/:id', getSingleTodo)
 
